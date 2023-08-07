@@ -1,13 +1,19 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {
     std::cout << "Hello X1 Carbon" << std::endl;
 
-    auto f1{1.0F};
-    auto d1{1.0};
+    srand(time(nullptr));
 
-    std::cout << f1 << " == " << d1 << " ? ... " << ((f1 == d1) ? "true" : "false");
+    for(int k=0; k<10; k++)
+    {
+        std::cout << rand() % 6 + 1 << ",";
+    }
+
+    std::cout << std::endl;
 
     return 0;
 }
