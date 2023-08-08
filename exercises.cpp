@@ -1,13 +1,14 @@
 #include <iostream>
-#include <iomanip>
 
 int main()
 {
-    std::cout << std::left << std::setw(15) << "Course" << std::setw(15) << "Students" << std::endl;
+    char ch{'x'};
+    std::cout << ch << " " << +ch << std::endl;  // plus sign pefix prints char as a number
 
-    std::cout << std::left << std::setw(15) << "C++" << std::right << std::setw(15) << 100 << std::endl;
-
-    std::cout << std::left << std::setw(15) << "JavaScript" << std::right << std::setw(15) << 50 << std::endl;
+    std::string name;
+    std::cout << "What's your name?";
+    std::getline(std::cin, name);
+    std::cout << "Hello " << name <<std::endl;
 
     return 0;
 }
