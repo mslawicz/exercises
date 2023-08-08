@@ -1,19 +1,13 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include <iomanip>
 
 int main()
 {
-    std::cout << "Hello X1 Carbon" << std::endl;
+    std::cout << std::left << std::setw(15) << "Course" << std::setw(15) << "Students" << std::endl;
 
-    srand(time(nullptr));
+    std::cout << std::left << std::setw(15) << "C++" << std::right << std::setw(15) << 100 << std::endl;
 
-    for(int k=0; k<10; k++)
-    {
-        std::cout << rand() % 6 + 1 << ",";
-    }
-
-    std::cout << std::endl;
+    std::cout << std::left << std::setw(15) << "JavaScript" << std::right << std::setw(15) << 50 << std::endl;
 
     return 0;
 }
