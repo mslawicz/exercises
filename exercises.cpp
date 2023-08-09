@@ -1,14 +1,15 @@
 #include <iostream>
+#include <iomanip>
 
 int main()
 {
-    char ch{'x'};
-    std::cout << ch << " " << +ch << std::endl;  // plus sign pefix prints char as a number
+    std::string name{"Marcin"};
 
-    std::string name;
-    std::cout << "What's your name?";
-    std::getline(std::cin, name);
-    std::cout << "Hello " << name <<std::endl;
+    for(auto ch : name)
+    {
+        // write characters in 2-digit hex notation
+        std::cout << std::hex << std::setw(2) << std::setfill('0') << +ch;
+    }
 
     return 0;
 }
