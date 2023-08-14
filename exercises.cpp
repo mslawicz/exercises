@@ -8,7 +8,7 @@ int main()
 
     *pX = 100;
     *pX += 2;
-    std::cout << "*" << pX.get() << "==" << *pX; 
+    std::cout << "*" << pX.get() << "==" << *pX << std::endl;
 
     // aritmetic operations not available: pX+=10;
 
@@ -19,6 +19,11 @@ int main()
     myArray[9] = 123.45;
 
     //no need to delete the pointer allocated memory
-    
+
+    //shared pointer:
+    auto pA = std::make_shared<int>();
+    auto pB(pA);
+    std::cout << pA.get() << "==" << pB.get() << std::endl;
+
     return 0;
 }
