@@ -1,9 +1,20 @@
 #include "extra.h"
 #include <iostream>
 
+struct Figure
+{
+    std::string color;
+    unsigned int area;
+};
+
 int main()
 {
-    std::string xstr = R"(C:\temp\x)";
-    std::cout << "path=" << xstr;
+    Figure rectangle{"yellow", 200};
+    Figure triangle{.color = "red", .area = 100};
+
+    //structured binding
+    auto [myColor, myArea] = triangle;
+    std::cout << "color=" << myColor;
+
     return 0;
 }
