@@ -26,6 +26,13 @@ bool operator==(const Figure& first, const Figure& second)
     return (first.color == second.color) && (first.area == second.area);
 }
 
+//overloading stream insertion
+std::ostream& operator<<(std::ostream& stream, const Figure& figure)
+{
+    stream << figure.color << "," << figure.area;
+    return stream;
+}
+
 int main()
 {
     Figure rectangle{"yellow", 200};
@@ -38,6 +45,7 @@ int main()
     std::cout << "is it bigger? " << std::boolalpha << triangle.isBigger(rectangle) << std::endl;
     auto copyOfTriangle{triangle};
     std::cout << "are they equal? " << std::boolalpha << (triangle == copyOfTriangle) << std::endl;
+    std::cout << triangle << std::endl; 
 
     return 0;
 }
