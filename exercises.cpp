@@ -18,6 +18,21 @@ int main()
     {
         std::cout << "file open error" << std::endl;
     }
+
+    //read the created file
+    std::ifstream file2read;
+    file2read.open("C:/temp/myFile.txt");
+     if(file2read.is_open())
+    {
+        std::string myText;
+        std::getline(file2read, myText);
+        std::cout << "the text read from a file: " << myText;
+        file2read.close();
+    }
+    else
+    {
+        std::cout << "file open for reading error" << std::endl;
+    }   
     
 
     return 0;
