@@ -6,12 +6,11 @@
 int main()
 {
     std::ofstream myFile;
-    myFile.open("C:/temp/myFile.txt");
+    myFile.open("C:/temp/myFile.bin", std::ios::binary);
     if(myFile.is_open())
     {
-        std::string myText{"my text written to my file\n"};
-        //first version: myFile.write(myText.c_str(), myText.length());
-        myFile << myText;   //second version
+        double PI = 3.14159;
+        myFile.write(reinterpret_cast<char*>(&PI), sizeof(PI));
         myFile.close();
     }
     else
@@ -21,12 +20,12 @@ int main()
 
     //read the created file
     std::ifstream file2read;
-    file2read.open("C:/temp/myFile.txt");
+    file2read.open("C:/temp/myFile.bin", std::ios::binary);
      if(file2read.is_open())
     {
-        std::string myText;
-        std::getline(file2read, myText);
-        std::cout << "the text read from a file: " << myText;
+        double myDouble{0};
+        file2read.read(reinterpret_cast<char*>(&myDouble), sizeof(myDouble));
+        std::cout << "the value read from a file: " << myDouble;
         file2read.close();
     }
     else
