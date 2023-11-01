@@ -4,7 +4,7 @@
 class MyClass
 {
 public:
-    MyClass(int x) {this->X = x;}
+    explicit MyClass(int x) {this->X = x;}
     int X{0};
 };
 
@@ -15,7 +15,8 @@ void showX(MyClass myClass)
 
 int main()
 {
-    showX(10);  // implicite conversion!
+    //showX(10);  // implicite conversion not possible
+    showX(MyClass{20});
 
     return 0;
 }
