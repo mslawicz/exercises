@@ -5,18 +5,29 @@ class MyClass
 {
 public:
     explicit MyClass(int x) {this->X = x;}
+    MyClass(int x, int y);
+    void showXY();
+private:    
     int X{0};
+    int Y{0};
 };
 
-void showX(MyClass myClass)
-{
-    std::cout << "X = " << myClass.X << std::endl;
-}
 
 int main()
 {
-    //showX(10);  // implicite conversion not possible
-    showX(MyClass{20});
+    MyClass myClass(10, 20);
+    myClass.showXY();
 
     return 0;
+}
+
+MyClass::MyClass(int x, int y) :
+    MyClass(x)  // delegated constructor
+{
+    this->Y = y;
+}
+
+void MyClass::showXY()
+{
+    std::cout << "X = " << X << "  Y = " << Y << std::endl;
 }
