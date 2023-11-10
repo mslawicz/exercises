@@ -8,7 +8,7 @@ public:
     Point(int x, int y);
     bool operator==(const Point& other) const;
     bool operator!=(const Point& other) const;
-    Point& operator+(const Point& other);
+    Point operator+(const Point& other) const;
 private:
     int x;
     int y;    
@@ -47,11 +47,12 @@ bool Point::operator!=(const Point& other) const
     return !(*this == other);   //not-equality uses equality operator
 }
 
-Point &Point::operator+(const Point &other)
+Point Point::operator+(const Point &other) const
 {
-    x += other.x;
-    y += other.y;
-    return *this;
+    Point sum = *this;
+    sum.x = this->x + other.x;
+    sum.y = this->y + other.y;
+    return sum;
 }
 
 //this function is a friend of Point class
