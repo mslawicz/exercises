@@ -8,11 +8,10 @@ public:
     Point(int x, int y);
     bool operator==(const Point& other) const;
     bool operator!=(const Point& other) const;
-    int getX() const { return x; }
-    int getY() const { return y; }
 private:
     int x;
     int y;    
+    friend std::ostream& operator<<(std::ostream& stream, const Point& point);  //declaration of a friend function
 };
 
 std::ostream& operator<<(std::ostream& stream, const Point& point);
@@ -46,8 +45,9 @@ bool Point::operator!=(const Point& other) const
     return !(*this == other);   //not-equality uses equality operator
 }
 
+//this function is a friend of Point class
 std::ostream& operator<<(std::ostream& stream, const Point& point)
 {
-    stream << "(" << point.getX() << "," << point.getY() << ")";
+    stream << "(" << point.x << "," << point.y << ")";  //private members accessible
     return stream;
 }
