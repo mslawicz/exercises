@@ -11,6 +11,7 @@ public:
     bool operator==(const Point& other) const;
     bool operator!=(const Point& other) const;
     Point operator+(const Point& other) const;
+    Point& operator+=(const Point& other);
 private:
     int x;
     int y;    
@@ -37,6 +38,7 @@ int main()
     std::cout << "my points: " << A << " , " << B << std::endl;
     std::cout << "addition A+B: " << (A+B) << std::endl;
     std::cout << "section length = " << length.calculateLength(A, B) << std::endl;
+    std::cout << "compound operatur A+=B:" << (A+=B) << "  A=" << A << std::endl;
 
     return 0;
 }
@@ -64,6 +66,13 @@ Point Point::operator+(const Point &other) const
     sum.x = this->x + other.x;
     sum.y = this->y + other.y;
     return sum;
+}
+
+Point& Point::operator+=(const Point& other)
+{
+    this->x += other.x;
+    this->y += other.y;
+    return *this;
 }
 
 //this function is a friend of Point class
