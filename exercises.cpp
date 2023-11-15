@@ -4,19 +4,23 @@ class Point
 {
 public:
     Point(int x) : x(x) {}
-    Point(const Point& other) { std::cout << "copy constructor " << std::endl; this->x = other.x; }
-    Point& operator=(const Point& other) { std::cout << "assignment operator" << std::endl; this->x = other.x; return *this; }
+    Point& operator++() { x++; return *this; }  //pre-increment operator
+    Point operator++(int) { Point copy(this->x); operator++(); return copy; } //post-incremental operator
+    int getX() const { return x; }
 private:
     int x;
 };
 
 int main()
 {
-    Point A(1);
-
-    Point B = A;    // copy operator
-    Point C(3);
-    C = B;  // assignment operator
+    Point A(10);
+    std::cout << A.getX() << std::endl;
+    Point B(0);
+    B = A++;
+    std::cout << A.getX() << std::endl;
+    std::cout << B.getX() << std::endl;
+    B = ++A;
+    std::cout << B.getX() << std::endl;        
 
     return 0;
 }
