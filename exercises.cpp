@@ -1,27 +1,36 @@
 #include "extra.h"
 #include <iostream>
-class Point
+
+class Figure
 {
 public:
-    Point(int x) : x(x) {}
-    Point& operator++() { x++; return *this; }  //pre-increment operator
-    Point operator++(int) { Point copy(this->x); operator++(); return copy; } //post-incremental operator
-    int getX() const { return x; }
+    virtual float getArea() const { return 0.0f; }
+    const float PI = 3.1415926f;
+};
+
+class Circle : public Figure
+{
+public:
+    Circle(float radius);
+    float getArea() const;
 private:
-    int x;
+    float radius;
 };
 
 int main()
-{
-    Point A(10);
-    std::cout << A.getX() << std::endl;
-    Point B(0);
-    B = A++;
-    std::cout << A.getX() << std::endl;
-    std::cout << B.getX() << std::endl;
-    B = ++A;
-    std::cout << B.getX() << std::endl;        
-
+{   
+    Circle circle1{1.0f};
+    std::cout << circle1.getArea() << std::endl;
     return 0;
 }
 
+Circle::Circle(float radius) :
+    radius(radius)
+{
+
+}
+
+float Circle::getArea() const
+{
+    return PI * radius * radius; 
+}
