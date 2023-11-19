@@ -50,9 +50,9 @@ int main()
     std::cout << "area of the rectangle = " << rectangle1.getArea() << std::endl;
     std::cout << "area of the square = " << square1.getArea() << std::endl;
 
-    //the compiler uses early binding here
+    //the compiler late (dynamic) binding here
     //Square object is passed by reference to Figure object
-    //since Figure::getArea() method is virtual, a child's method will be called
+    //since Figure::getArea() method is virtual, a child's method will be called, which overrides the method in the base class
     showFigureArea(square1);
     return 0;
 }
