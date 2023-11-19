@@ -17,10 +17,22 @@ private:
     float radius;
 };
 
+class Rectangle : public Figure
+{
+public:
+    Rectangle(float A, float B);
+    float getArea() const;
+private:
+    float A;
+    float B;
+};
+
 int main()
 {   
     Circle circle1{1.0f};
-    std::cout << circle1.getArea() << std::endl;
+    Rectangle rectangle1{2.0f, 3.0f};
+    std::cout << "area of the circle = " << circle1.getArea() << std::endl;
+    std::cout << "area of the rectangle = " << rectangle1.getArea() << std::endl;
     return 0;
 }
 
@@ -33,4 +45,16 @@ Circle::Circle(float radius) :
 float Circle::getArea() const
 {
     return PI * radius * radius; 
+}
+
+Rectangle::Rectangle(float A, float B) :
+    A(A),
+    B(B)
+{
+
+}
+
+float Rectangle::getArea() const
+{
+    return A * B;
 }
