@@ -44,6 +44,9 @@ int main()
     std::cout << "area of the circle = " << circle1.getArea() << std::endl;
     std::cout << "area of the rectangle = " << rectangle1.getArea() << std::endl;
     std::cout << "area of the square = " << square1.getArea() << std::endl;
+
+    Figure anyFigure = square1;     //class upcasting (cast from a child to a parent)
+    std::cout << "area of the anyFigure = " << anyFigure.getArea() << std::endl; // displays 0 because generic (base) Figure defines no area
     return 0;
 }
 
