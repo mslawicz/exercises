@@ -36,6 +36,11 @@ private:
     float A;
 };
 
+void showFigureArea(Figure& figure)
+{
+    std::cout << "area of the figure = " << figure.getArea() << std::endl;
+}
+
 int main()
 {   
     Circle circle1{1.0f};
@@ -45,8 +50,10 @@ int main()
     std::cout << "area of the rectangle = " << rectangle1.getArea() << std::endl;
     std::cout << "area of the square = " << square1.getArea() << std::endl;
 
-    Figure anyFigure = square1;     //class upcasting (cast from a child to a parent)
-    std::cout << "area of the anyFigure = " << anyFigure.getArea() << std::endl; // displays 0 because generic (base) Figure defines no area
+    //the compiler uses early binding here
+    //Square object is passed by reference to Figure object
+    //since Figure::getArea() method is virtual, a child's method will be called
+    showFigureArea(square1);
     return 0;
 }
 
