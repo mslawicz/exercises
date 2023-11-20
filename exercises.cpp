@@ -1,7 +1,7 @@
 #include "extra.h"
 #include <iostream>
 #include <array>
-
+#include <memory>
 class Figure
 {
 public:
@@ -46,11 +46,11 @@ int main()
     std::cout << "area of the rectangle = " << rectangle1.getArea() << std::endl;
     std::cout << "area of the square = " << square1.getArea() << std::endl;
 
-    std::array<Figure*, 3> pFigures
+    std::array<std::shared_ptr<Figure>, 3> pFigures
     {
-        &circle1,
-        &square1,
-        &rectangle1
+        std::make_unique<Circle>(circle1),
+        std::make_unique<Square>(square1),
+        std::make_unique<Rectangle>(rectangle1)
     };
 
     for(auto pFigure : pFigures)
