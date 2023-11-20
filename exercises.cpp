@@ -37,11 +37,6 @@ private:
     float A;
 };
 
-void showFigureArea(Figure& figure)
-{
-    std::cout << "area of the figure = " << figure.getArea() << std::endl;
-}
-
 int main()
 {   
     Circle circle1{1.0f};
@@ -60,7 +55,7 @@ int main()
 
     for(auto pFigure : pFigures)
     {
-        showFigureArea(*pFigure);
+        std::cout << "area of the figure = " << pFigure->getArea() << std::endl;
     }
     return 0;
 }
