@@ -1,5 +1,6 @@
 #include "extra.h"
 #include <iostream>
+#include <array>
 
 class Figure
 {
@@ -50,10 +51,17 @@ int main()
     std::cout << "area of the rectangle = " << rectangle1.getArea() << std::endl;
     std::cout << "area of the square = " << square1.getArea() << std::endl;
 
-    //the compiler late (dynamic) binding here
-    //Square object is passed by reference to Figure object
-    //since Figure::getArea() method is virtual, a child's method will be called, which overrides the method in the base class
-    showFigureArea(square1);
+    std::array<Figure*, 3> pFigures
+    {
+        &circle1,
+        &square1,
+        &rectangle1
+    };
+
+    for(auto pFigure : pFigures)
+    {
+        showFigureArea(*pFigure);
+    }
     return 0;
 }
 
