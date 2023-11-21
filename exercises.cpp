@@ -2,11 +2,12 @@
 #include <iostream>
 #include <array>
 #include <memory>
+
+//abstract class
 class Figure
 {
 public:
-    Figure();
-    virtual float getArea() const { return 0.0f; }
+    virtual float getArea() const = 0;  //pure virtual method
     const float PI = 3.1415926f;
 };
 
@@ -39,6 +40,7 @@ private:
 
 int main()
 {   
+    //Figure figure1;   the abstract class cannot be instantiated
     Circle circle1{1.0f};
     Rectangle rectangle1{2.0f, 3.0f};
     Square square1{2.0f};
@@ -58,11 +60,6 @@ int main()
         std::cout << "area of the figure = " << pFigure->getArea() << std::endl;
     }
     return 0;
-}
-
-Figure::Figure()
-{
-    std::cout << "Figure constructor is called" << std::endl;
 }
 
 Circle::Circle(float radius) :
