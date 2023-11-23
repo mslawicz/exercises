@@ -15,9 +15,17 @@ private:
 
 int main()
 {   
-    Circle circle1{1.0f};
-    Circle circle2(-2.0f);
+    try
+    {
+        Circle circle1{1.0f};   //this line does not throw an exception
+        Circle circle2(-2.0f);  //this line throws an exception
+    }
+    catch(const std::invalid_argument& exception)   //invalid_argument exception is cought only
+    {
+        std::cerr << "invalid argument in " << exception.what() << '\n';
+    }
     
+    std::cout << "function main is complete" << std::endl;
     return 0;
 }
 
@@ -29,6 +37,7 @@ Circle::Circle(float radius) :
     {
         throw std::invalid_argument{"radius"};
     }
+    std::cout << "Circle constructor is complete" << std::endl;
 }
 
 float Circle::getArea() const
