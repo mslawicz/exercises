@@ -13,18 +13,24 @@ private:
     const float PI = 3.1415926;
 };
 
-int main()
-{   
+void makeCircle(float radius)
+{
     try
     {
-        Circle circle1{1.0f};   //this line does not throw an exception
-        Circle circle2(-2.0f);  //this line throws an exception
+        Circle circle{radius};
     }
-    catch(const std::invalid_argument& exception)   //invalid_argument exception is cought only
+    catch(const std::logic_error& exception)   //any radius-related exception is cought
     {
-        std::cerr << "invalid argument in " << exception.what() << '\n';
+        std::cerr << "radius error: " << exception.what() << '\n';
     }
-    
+}
+
+int main()
+{   
+    makeCircle(1.0f);   //no exception
+    makeCircle(-1.0f);  //exception
+    makeCircle(11.0f);  //another exception
+
     std::cout << "function main is complete" << std::endl;
     return 0;
 }
@@ -35,7 +41,11 @@ Circle::Circle(float radius) :
     std::cout << "Circle constructor is called" << std::endl;
     if(radius <= 0)
     {
-        throw std::invalid_argument{"radius"};
+        throw std::invalid_argument{"radius negative!"};
+    }
+    else if(radius > 10)
+    {
+        throw std::out_of_range{"radius too big"};
     }
     std::cout << "Circle constructor is complete" << std::endl;
 }
