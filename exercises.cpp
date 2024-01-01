@@ -19,10 +19,14 @@ void makeCircle(float radius)
     {
         Circle circle{radius};
     }
-    catch(const std::logic_error& exception)   //any radius-related exception is cought
+    catch(const std::invalid_argument& exception)   //invalid_argument exception is cought
     {
-        std::cerr << "radius error: " << exception.what() << '\n';
+        std::cerr << "Serious error: " << exception.what() << '\n';
     }
+    catch(const std::out_of_range& exception)   //out_of_range exception is cought
+    {
+        std::cerr << "Minor error: " << exception.what() << '\n';
+    }    
 }
 
 int main()
