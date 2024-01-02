@@ -21,7 +21,8 @@ void makeCircle(float radius)
     }
     catch(const std::invalid_argument& exception)   //invalid_argument exception is cought
     {
-        std::cerr << "Serious error: " << exception.what() << '\n';
+        std::cerr << "do sth important here and rethrow exception" << '\n';
+        throw;
     }
     catch(const std::out_of_range& exception)   //out_of_range exception is cought
     {
@@ -31,9 +32,16 @@ void makeCircle(float radius)
 
 int main()
 {   
-    makeCircle(1.0f);   //no exception
-    makeCircle(-1.0f);  //exception
-    makeCircle(11.0f);  //another exception
+    try
+    {
+        makeCircle(1.0f);   //no exception
+        makeCircle(11.0f);  //minor exception
+        makeCircle(-1.0f);  //serious exception
+    }
+    catch(const std::exception& ex)   //invalid_argument exception is cought
+    {
+        std::cerr << "Serious error in main function: " << ex.what() << '\n';
+    }
 
     std::cout << "function main is complete" << std::endl;
     return 0;
